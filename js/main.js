@@ -1,4 +1,4 @@
-
+//main function
 var init = function()
 {
 	//json object
@@ -24,8 +24,17 @@ var init = function()
 		div.style.background = "red";
 		div.style.display = 'none';
 		div.setAttribute('id', 'json['+i+']');
-        div.innerHTML = '<span class="questMain">' + json[i].name + '</br></br></span><span class="productPrice">' + json[i].options + '</br></br><span class="btn" onclick="show('+i+')">Next</span>';
+        div.innerHTML = '<span class="questMain">' + json[i].name + '</br></br></span><span class="answerList" onclick = "ansStore()"><input type = "radio" id = "radioOptions" value = "1">' + json[i].options[0] + '</br><input type = "radio" id = "radioOptions" value = "2">' + json[i].options[1] + '</br><input type = "radio" id = "radioOptions" value = "3">' + json[i].options[2] + '</br></br></br></br></br><span class="btn" onclick="show('+i+')">Next</span>';
         document.body.appendChild(div);
+		//verifying selected answer
+		var answer = document.getElementById('radioOptions');
+	      for (var j = 0; j < 3; j++) {
+		    if (answer[j].checked) 
+		    {
+		    	//if(answers[i].value == json)
+		    	alert(answer[j].value);
+		    }
+	    }
     }
 
 };//end init
@@ -37,6 +46,18 @@ function show(r)
 	//document.getElementById('json['+r+']').style.display = 'block';
 	div.style.display = 'block';
 
+}
+
+//storing answers
+function ansStore()
+{
+	var answers = [];
+	answer = document.getElementById('radioOptions');
+	    if (answer[i].checked) 
+	    {
+	    	//if(answers[i].value == json)
+	    	alert(answer[i].value);
+	    }
 }
 
 init();
